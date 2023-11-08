@@ -1,4 +1,6 @@
-﻿namespace salesenjoi.Mobille
+﻿using salesenjoi.Mobille.MVVM.Views;
+
+namespace salesenjoi.Mobille
 {
     public partial class App : Application
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new PersonView());
         }
     }
 }
