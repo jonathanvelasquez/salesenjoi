@@ -7,8 +7,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />               
+                
+            </ResourceDictionary.MergedDictionaries>            
+            <x:String x:Key="UrlAPI">https://cursoandroid2023api.azurewebsites.net/</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
