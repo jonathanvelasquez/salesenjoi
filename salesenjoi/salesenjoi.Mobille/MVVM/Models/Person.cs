@@ -12,7 +12,7 @@ namespace salesenjoi.Mobille.MVVM.Model
 
         public string Document { get; set; }
 
-        public string FirtName { get; set; }
+        public string FirstName { get; set; }
 
         public string LastName { get; set; }
 

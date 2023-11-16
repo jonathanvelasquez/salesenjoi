@@ -18,11 +18,13 @@ namespace salesenjoi.Mobille.MVVM.ViewModels
         private bool _isRunning;
         private bool _isEnabled;
         private readonly IApiService _apiService;
+        private readonly INavigation _navigation;
 
-        public CreatePersonViewModel(IApiService apiService)
+        public CreatePersonViewModel(IApiService apiService, INavigation navigation)
         {
             IsEnabled = true;
             _apiService = apiService;
+            _navigation = navigation;
         }
 
         public string Document
@@ -169,7 +171,7 @@ namespace salesenjoi.Mobille.MVVM.ViewModels
             Person person = new Person 
             { 
                 Document = Document,
-                FirtName = FirtName,
+                FirstName = FirtName,
                 LastName = LastName,
                 Addres = Addres,    
                 Phone = Phone,  
@@ -178,7 +180,7 @@ namespace salesenjoi.Mobille.MVVM.ViewModels
             };
 
             string url = App.Current.Resources["UrlAPI"].ToString();
-            Response response = await _apiService.PostAsync(url,"/api","/People", person);
+            Response response = await _apiService.PostAsync(url,"/api","/people", person);
             IsRunning = false;
             IsEnabled = true;
 
@@ -188,12 +190,8 @@ namespace salesenjoi.Mobille.MVVM.ViewModels
                 return;
             }
 
-
-
-
-
-
-
+            await App.Current.MainPage.DisplayAlert("Ok","La persona se ha registrado correctamente","Aceptar");
+            await _navigation.PopAsync();
 
         }
 
