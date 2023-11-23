@@ -10,5 +10,7 @@ namespace salesenjoi.Mobille.Services
     public interface IApiService
     {
         Task<Response> PostAsync<T>(string urlBase, string servicePrefix, string controller, T model);
+
+        Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller);
     }
 }

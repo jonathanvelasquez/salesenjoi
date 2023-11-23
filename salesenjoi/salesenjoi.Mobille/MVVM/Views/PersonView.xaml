@@ -7,14 +7,92 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="mas" Command="{Binding NewPersonCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
+
+
+    <AbsoluteLayout>
+        <ScrollView AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="5">
+            <CollectionView ItemsSource="{Binding People}" x:Name="cPeopleViem">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical">                        
+                    </GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>                                    
+                                    <SwipeItem BackgroundColor="Yellow"
+                                               Command="{Binding Source={x:Reference cPeopleViem}, Path=BindingContext.EditPersonCommand}"
+                                               CommandParameter="{Binding .}">
+                                        
+                                    </SwipeItem>
+
+                                    <SwipeItem BackgroundColor="Red"
+                                               Command="{Binding Source={x:Reference cPeopleViem}, Path=BindingContext.DeletePersonCommand}"
+                                               CommandParameter="{Binding .}">   
+
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <Frame Padding="5" Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EditPersonCommand}">                                        
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Label HorizontalTextAlignment="Start" TextColor="Black" Text="Documento: " Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+                                    <Label TextColor="Black" Text="{Binding Document}" Grid.Row="0" Grid.Column="1" />
+
+                                    <Label HorizontalTextAlignment="Start" TextColor="Black" Text="Nombres: " Grid.Row="1" Grid.Column="0" FontAttributes="Bold" />
+                                    <Label TextColor="Black" Text="{Binding FirstName}" Grid.Row="1" Grid.Column="1" />
+
+                                    <Label HorizontalTextAlignment="Start" TextColor="Black" Text="Apellidos: " Grid.Row="2" Grid.Column="0" FontAttributes="Bold" />
+                                    <Label TextColor="Black" Text="{Binding LastName}" Grid.Row="2" Grid.Column="1" />
+
+                                    <Label HorizontalTextAlignment="Start" TextColor="Black" Text="Dirección: " Grid.Row="3" Grid.Column="0" FontAttributes="Bold" />
+                                    <Label TextColor="Black" Text="{Binding Addres}" Grid.Row="3" Grid.Column="1" />
+
+                                    <Label HorizontalTextAlignment="Start" TextColor="Black" Text="Telefono: " Grid.Row="4" Grid.Column="0" FontAttributes="Bold" />
+                                    <Label TextColor="Black" Text="{Binding Phone}" Grid.Row="4" Grid.Column="1" />
+
+                                    <Label HorizontalTextAlignment="Start" TextColor="Black" Text="Email: " Grid.Row="5" Grid.Column="0" FontAttributes="Bold" />
+                                    <Label TextColor="Black" Text="{Binding Email}" Grid.Row="5" Grid.Column="1" />
+
+                                    <ImageButton 
+                                         Source="dotnet_bot.svg"
+                                         Command="{Binding EditPersonCommand}"
+                                         Grid.RowSpan="6"
+                                         Grid.Column="2"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="EndAndExpand"
+                                         HeightRequest="50"
+                                         WidthRequest="50">     
+                                    </ImageButton>
+                                </Grid>
+                            </Frame>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </AbsoluteLayout>
     
     
-    <VerticalStackLayout VerticalOptions="Center">
-        <Label 
-            Text="Listas de las personas"       
-            FontSize="30"
-            TextColor="Black"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
 </ContentPage>

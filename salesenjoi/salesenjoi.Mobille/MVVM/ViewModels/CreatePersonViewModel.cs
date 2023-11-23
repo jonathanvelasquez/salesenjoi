@@ -191,6 +191,7 @@ namespace salesenjoi.Mobille.MVVM.ViewModels
             }
 
             await App.Current.MainPage.DisplayAlert("Ok","La persona se ha registrado correctamente","Aceptar");
+            PersonViewModel.GetInstance().LoadPersonAsync();
             await _navigation.PopAsync();
 
         }
