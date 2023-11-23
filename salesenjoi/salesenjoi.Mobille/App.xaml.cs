@@ -8,7 +8,7 @@ namespace salesenjoi.Mobille
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new PersonView());
+            MainPage = new NavigationPage(new TabbedView());
         }
     }
 }
